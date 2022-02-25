@@ -18,17 +18,28 @@
 
 // v2.0
 // 真正创建节点,是孤儿节点，不进行插入
-export default function ( vnode ) {
-  console.log( '目的是把vnode' )
+export default function createElement( vnode ) {
+  console.log( '目的是把vnode', vnode, '真正变为dom，但是不插入' )
   let domNode = document.createElement(vnode.sel)
   // 有子节点还是有文本
   if ( vnode.text != '' && vnode.children == undefined || vnode.children.length == 0 ) {
       // 它内部是文字
       domNode.innerText = vnode.text
-      // 补充elm属性
-      vnode.elm = domNode
-    } 
+  } else if ( Array.isArray(vnode.children) && vnode.children.length > 0 ) {
+    // 它内部是子节点就要递归创建节点
+    for (let i = 0; i < vnode.children.length; i++) {
+      // 得到当前的children
+      let ch = vnode.children[i]
+      // console.log( ch )
+      // 创建出它的dom,一旦调用createElement，意味着：elm属性指向了创建出的dom，但是还没有上树，是一个孤儿节点
+      let chDom = createElement(ch)
+      domNode.appendChild(chDom)
+    }
+  } 
 
-    // 返回elm，elm属性纯dom
-    return vnode.elm
+  // 补充elm属性
+  vnode.elm = domNode
+
+  // 返回elm，elm属性纯dom
+  return vnode.elm
 }

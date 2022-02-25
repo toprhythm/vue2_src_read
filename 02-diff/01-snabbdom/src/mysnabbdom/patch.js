@@ -18,8 +18,10 @@ export default function (oldVnode, newVnode) {
     console.log( '不是同一个节点，暴力拆除旧的创建新的' )
     let newVnodeElm = createElement(newVnode)
     // 插入老节点之前
-    oldVnode.elm.parentNode.insertBefore(newVnodeElm, oldVnode.elm)
+    if (oldVnode.elm.parentNode && newVnodeElm) {
+      oldVnode.elm.parentNode.insertBefore(newVnodeElm, oldVnode.elm)
+    }
+    // 删除老节点
+    oldVnode.elm.parentNode.removeChild(oldVnode.elm)
   } 
-
-  console.log( oldVnode )
 }
