@@ -1,0 +1,34 @@
+- 官方git: https://github.com/snabbdom/snabbdom
+
+- npm i -S snabbdom
+
+- 必须装webpack@5: npm i -D webpack@5 webpack-cli@3 webpack-dev-server@3
+
+- webpackjs.com
+
+- diff别名dom最小化更新：本质上是旧的虚拟dom和新的虚拟dom进行比较，找出差异，更新为新dom，然后渲染到真实dom
+
+- 本课程不讲 div -> {sel,text,chidlren} 的过程，即html模板编译成虚拟dom的知识点，只讲述 新/老 虚拟dom的知识点，如果十分需要可以看尚硅谷搜索：mastache模板编译
+
+- h函数用来产生虚拟节点 (vnode) virtual node
+- 比如这样调用 h 函数: h('a', { props: {href: 'http://www.atguigu.com'}}, '尚硅谷')
+
+- 得到的是这样的虚拟节点
+- {'sel':'a', 'data': {props: { href: 'http://www.atguigu.com'}}, "text": "尚硅谷"}
+
+- 他表示真正的dom节点：
+- <a href="http://www.sgg.com">尚硅谷</a>
+
+- 一个虚拟节点有哪些属性?
+```
+{
+  children: undefined,
+  data: {},
+  elm: undefined,
+  key: undefined,
+  sel: 'div',
+  text: '我是一个盒子'
+}
+```
+
+- 手写h函数

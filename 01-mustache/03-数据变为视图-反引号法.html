@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<ul id="list"></ul>
+
+<script>
+    var userList = [
+      { "name": "小明", "age": 20, "sex": "男" },
+      { "name": "小红", "age": 21, "sex": "女" },
+      { "name": "小强", "age": 22, "sex": "男" },
+    ]
+
+    var list = document.getElementById('list')
+
+    // 遍历用户数组，每遍历1项，就以字符串的视角将HTML字符串添加到list中
+    // 斩断连接大法好!!!
+    for (let i = 0; i < userList.length; i++) {
+      list.innerHTML += `
+                          <li>
+                            <div class="hd"> ${userList[i].name}的信息 </div>
+                            <div class="bd">
+                              <p>姓名: ${userList[i].name} </p>
+                              <p>年龄: ${userList[i].age} </p>
+                              <p>性别: ${userList[i].sex} </p>
+                            </div>
+                          </li>
+                        `
+    }
+</script>
+
+</body>
+</html>

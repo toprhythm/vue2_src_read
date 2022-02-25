@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+<script src="./lib/mustache.js"></script>
+<script>
+  var templateStr = `
+    <ul>
+      {{#userList}}
+      <li>
+        <div class="hd"> {{name}}的信息 </div>
+        <div class="bd">
+          <p>姓名: {{name}} </p>
+          <p>年龄: {{age}} </p>
+          <p>性别: {{sex}} </p>
+        </div>
+      </li>
+      {{/userList}}
+    </ul>
+  `
+  Mustache.render(templateStr, {})
+  //  [Array(4), Array(6), Array(4)]
+//   0: "text"
+// 1: "      <li>\n        <div class=\"hd\"> "
+// 2: 30
+// 3: 66
+
+</script>
+
+</body>
+</html>

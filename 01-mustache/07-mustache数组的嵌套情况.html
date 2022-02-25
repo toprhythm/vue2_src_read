@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <!--  简单数组就是类似于 [0,1,2,3] -->
+<div id="container"></div>
+  
+<script src="./lib/mustache.js"></script>
+<script>
+  var templateStr = `
+    <ul>
+      {{#arr}}
+        <li>
+          {{name}}的爱好是:
+          <ol>
+            {{#hobbies}}
+              {{.}}
+            {{/hobbies}}
+          </ol>
+        </li>
+      {{/arr}}
+    </ul>
+  `
+  
+  let data = {
+    arr: [
+      {"name": "小明", "age": 20, "hobbies": ["游泳","羽毛球"]},
+      {"name": "小红", "age": 22, "hobbies": ["听歌","游戏"]},
+      {"name": "小强", "age": 25, "hobbies": ["建模"]}
+    ]
+  }
+  var domStr = Mustache.render(templateStr, data)
+  // console.log( domStr )
+  var container = document.getElementById('container')
+  container.innerHTML = domStr
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <!--  简单数组就是类似于 [0,1,2,3] -->
+<div id="container"></div>
+  
+
+<script type="text/tamplate">
+  asdjjklasf
+  sdfkljkldfs
+  dskfljlksd
+</script>
+<script src="./lib/mustache.js"></script>
+<script>
+  var templateStr = `
+    {{#m}}
+      <h1>你好</h1>
+    {{/m}}
+  `
+  
+  let data = {
+    m: true,
+    // m: false
+  }
+  var domStr = Mustache.render(templateStr, data)
+  // console.log( domStr )
+  var container = document.getElementById('container')
+  container.innerHTML = domStr
+
+</script>
+
+</body>
+</html>

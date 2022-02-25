@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>我是index,html你好！！</h1>
+  <script src="/xuni/bundle.js"></script>
+  <script>
+    
+    // 模板字符串 v1.0
+    // var templateStr = "我买了一个{{thing}},好{{mood}}啊!"
+
+    // 模板字符串 v2.0
+    var templateStr = `
+      <div>
+        <ol>
+          {{#students}}
+          <li>
+            学生{{name}}的爱好是
+            <ol>
+              
+            </ol>
+          </li>
+          {{/students}}
+        </ol>
+      </div>
+    `
+
+    // 模板字符串3.0
+    // var templateStr = '我爱{{somebody}},{{somebody}}也爱我,我好{{mood}}啊,我考了{{a.b.c}}分'
+    
+
+    // 数据
+    // var data = {
+    //   thing: '苹果手机',
+    //   mood: '兴奋'
+    // }
+
+    // 数据 v2.0
+    var data = {
+      students: [
+        { 'name': '小明', 'hobbies': ['游泳', '足球'] },
+        { 'name': '小红', 'hobbies': ['游泳', '听歌'] },
+        { 'name': '小强', 'hobbies': ['游泳', '画画'] },
+      ]
+    }
+
+    // 数据v3.0
+    // var data = {
+    //   somebody: '尚硅谷',
+    //   mood: '开心',
+    //   a: {
+    //     b: {
+    //       c: 99
+    //     }
+    //   }
+    // }
+
+    SSG_TemplateEngine.render(templateStr,data)
+  </script>
+</body>
+</html>

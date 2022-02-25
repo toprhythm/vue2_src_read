@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  var templateStr = '<h1>我买了一个{{thing}}, {{mood}}啊</h1>'
+
+  var data = {
+    thing: "白菜",
+    mood: "高兴`"
+  }
+
+  // 这样只能替换第一个 匹配项
+  // console.log( '我爱尚硅谷, 我也爱打篮球'.replace('我', '你') )
+
+  // 替换所有匹配项
+  // console.log( '我爱尚硅谷, 我也爱打篮球'.replace(/我/g, '你') )
+
+  // 高级写法
+  // console.log( '我爱尚硅谷, 我也爱打篮球'.replace(/我/g, function ( a,b,c ) {
+  //   // 我 0 我爱尚硅谷, 我也爱打篮球
+  //   // 我 7 我爱尚硅谷, 我也爱打篮球
+  //   console.log( a,b,c )
+  //   return '它'// 它爱尚硅谷, 它也爱打篮球
+  // }) )
+
+  // 解决我们的需求
+  // console.log( templateStr.replace(/\{\{(\w+)\}\}/g, function ( findStr,resultStr,resultIndex,metaStr ) {
+  //   console.log( findStr )
+  //   console.log( resultStr )
+  //   console.log( resultIndex )
+  //   console.log( metaStr )
+  //   return '☆'
+  // }) )
+//   {{thing}}
+// 10-正则表达式简单填充模板.html:34 thing
+// 10-正则表达式简单填充模板.html:35 9
+// 10-正则表达式简单填充模板.html:36 <h1>我买了一个{{thing}}, {{mood}}啊</h1>
+
+  // console.log( templateStr.replace(/\{\{(\w+)\}\}/g, function ( findStr,$1 ) {
+  //   return data[$1]// thing
+  // }) )
+
+function render( templateStr, data ) {
+  return templateStr.replace(/\{\{(\w+)\}\}/g, function ( findStr,$1 ) {
+    return data[$1]// thing
+  })
+}
+
+var result = render(templateStr, data)
+console.log( result )
+
+
+</script>
+
+</body>
+</html>

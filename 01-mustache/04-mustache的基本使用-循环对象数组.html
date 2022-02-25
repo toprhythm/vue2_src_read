@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div id="container"></div>
+  
+<script src="./lib/mustache.js"></script>
+<script>
+  // console.log( Mustache )
+  /*
+      Object
+      Context: ƒ Context(view, parentContext)
+      Scanner: ƒ Scanner(string)
+      Writer: ƒ Writer()
+      clearCache: ƒ clearCache()
+      escape: ƒ escapeHtml(string)
+      name: "mustache.js"
+      parse: ƒ parse(template, tags)
+      render: ƒ render(template, view, partials, tags)
+      tags: (2) ['{{', '}}']
+      templateCache: （…）
+      version: "4.0.1"
+      get templateCache: ƒ templateCache()
+      set templateCache: ƒ templateCache(cache)
+      [[Prototype]]: Object
+  */
+
+  var templateStr = `
+    <ul>
+      {{#userList}}
+      <li>
+        <div class="hd"> {{name}}的信息 </div>
+        <div class="bd">
+          <p>姓名: {{name}} </p>
+          <p>年龄: {{age}} </p>
+          <p>性别: {{sex}} </p>
+        </div>
+      </li>
+      {{/userList}}
+    </ul>
+  `
+  
+  let data = {
+    userList: [
+      { "name": "小明", "age": 20, "sex": "男" },
+      { "name": "小红", "age": 21, "sex": "女" },
+      { "name": "小强", "age": 22, "sex": "男" },
+    ]
+  }
+  var domStr = Mustache.render(templateStr, data)
+  // console.log( domStr )
+  var container = document.getElementById('container')
+  container.innerHTML = domStr
+
+</script>
+
+</body>
+</html>

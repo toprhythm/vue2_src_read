@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+<ul id="list"></ul>
+
+<script>
+  // Invalid or unexpected token
+  // var str = '
+  // asd
+  // fd;sd
+  // '
+
+  // 反引号 但是是es6
+  // var str = `
+  // asflkl;df
+  // ds;lfkl;sdfk
+  // dfgkl;fd
+  // `
+
+  // 数组join
+  // var str = [
+  // // ？？？ 能换行了
+  //   'A',
+  //   'B',
+  //   'C',
+  //   'D'
+  // ]
+  // console.log( str.join('') )// ABCD
+
+  // 循序渐进,很神奇!! 能想出这种方法的人是人才，join到一起是没有换行，但是人阅读的时候是有换行的感觉的，很神奇!!,还可以斩断连接
+  var userList = [
+    { "name": "小明", "age": 20, "sex": "男" },
+    { "name": "小红", "age": 21, "sex": "女" },
+    { "name": "小强", "age": 22, "sex": "男" },
+  ]
+
+  var list = document.getElementById('list')
+
+  // 遍历用户数组，每遍历1项，就以字符串的视角将HTML字符串添加到list中
+  // 斩断连接大法好!!!
+  for (let i = 0; i < userList.length; i++) {
+    list.innerHTML += [
+                        '<li>',
+                        '  <div class="hd">'+ userList[i].name +'的信息</div>',
+                        '  <div class="bd">',
+                        '    <p>姓名：'+ userList[i].name +'</p>',
+                        '    <p>年龄: '+ userList[i].age +'</p>',
+                        '    <p>性别：'+ userList[i].sex +'</p>',
+                        '  </div>',
+                        '</li>',
+                      ].join('') 
+  }
+
+  // var str = [
+  //   '<li>',
+  //   '  <div class="hd"></div>',
+  //   '  <div class="bd">',
+  //   '    <p>姓名：</p>',
+  //   '    <p>年龄: </p>',
+  //   '    <p>性别：</p>',
+  //   '  </div>',
+  //   '</li>',
+  // ].join('') 
+  // console.log( str )
+  
+</script>
+
+</body>
+</html>
